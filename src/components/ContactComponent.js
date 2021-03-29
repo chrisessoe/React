@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Label, Col, Row } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Label, Col, Row, Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, Form, Errors, Actions } from 'react-redux-form';
 
@@ -35,9 +35,8 @@ class Contact extends Component {
     }
 
      handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
-        this.props.resetFeedbackForm();
+         this.props.postFeedback(values);
+         this.props.resetFeedbackForm();
     }
 
     render() {
@@ -177,10 +176,11 @@ class Contact extends Component {
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="phoneNum" md={2}>Comment</Label>
+                                <Label htmlFor="comment" md={2}>Comment</Label>
                                 <Col md={10}>
                                     <Control.textarea placeholder="type text" type="text" id="text" model=".text" className="form-control" rows={6}>
-                                </Control.textarea>
+                                    </Control.textarea>
+                                    <Button>Submit</Button>
                             </Col>
                             </Row>
                         </Form>
